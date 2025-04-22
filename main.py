@@ -6,7 +6,7 @@ WIDTH = 1280
 HEIGHT = 720
 
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
-pygame.display.set_caption('Pygame Movement!')
+pygame.display.set_caption('SMCCD_Hackathon')
 
 timer = pygame.time.Clock()
 
