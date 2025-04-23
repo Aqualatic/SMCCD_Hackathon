@@ -45,22 +45,22 @@ while x_position < WIDTH:
 
 # Global variables
 timer = pygame.time.Clock()
-fps = 60
+FPS = 60
 player_x = 300
 player_y = 300
-player_speed = 5
+PLAYERSPEED = 5
 x_direction = 0
 facing_right = True
 current_animation = idleAnimation
 index = 0
-animation_cooldown = 100
+ANIMATIONCOOLDOWN = 100
 last_update = pygame.time.get_ticks()
 is_jumping = False
 jump_index = 0
 jump_animation_started = False
 vertical_velocity = 0
-gravity = 0.5
-jump_strength = -12
+GRAVITY = 0.5
+JUMPSTRENGTH = -12
 
 # Image variables
 bg = pygame.image.load('back.png').convert()
@@ -72,7 +72,7 @@ middle.set_colorkey((0, 0, 0))
 # Main game loop
 run = True
 while run:
-    timer.tick(fps)
+    timer.tick(FPS)
     screen.blit(bg, (0, 0))
     screen.blit(middle, (0, 0))
 
@@ -110,20 +110,20 @@ while run:
             jump_animation_started = True
             last_update = now
 
-        if (now - last_update) >= animation_cooldown:
+        if (now - last_update) >= ANIMATIONCOOLDOWN:
             last_update = now
             if jump_index < len(jumpAnimation) - 1:
                 jump_index += 1
     else:
-        if (now - last_update) >= animation_cooldown:
+        if (now - last_update) >= ANIMATIONCOOLDOWN:
             last_update = now
             index = (index + 1) % len(current_animation)
 
     # Apply horizontal movement
-    player_x += player_speed * x_direction
+    player_x += PLAYERSPEED * x_direction
 
-    # Apply gravity
-    vertical_velocity += gravity
+    # Apply GRAVITY
+    vertical_velocity += GRAVITY
     player_y += vertical_velocity
 
     # Build player rect
@@ -148,7 +148,7 @@ while run:
     if (keys[pygame.K_UP] or keys[pygame.K_w]) and on_ground:
         is_jumping = True
         jump_animation_started = False
-        vertical_velocity = jump_strength
+        vertical_velocity = JUMPSTRENGTH
 
     # Draw player
     if is_jumping:
