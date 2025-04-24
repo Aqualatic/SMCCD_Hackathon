@@ -23,7 +23,7 @@ tileHeight = 69
 myTilesSpritesheet = Spritesheet('tiles.png')
 tilesSpriteSheet = [myTilesSpritesheet.parse_sprite('tiles-0.png'),
                     myTilesSpritesheet.parse_sprite('tiles-1.png')]
-ground_tiles = []
+groundTiles = []
 
 # Music
 def playsong(song_path):
@@ -51,8 +51,8 @@ timer = pygame.time.Clock()
 FPS = 60
 
 # Player
-player_x = 300
-player_y = 300
+player_x = 100
+player_y = HEIGHT - 50
 playerSpeed = 3
 x_direction = 0
 facingRight = True
@@ -103,15 +103,26 @@ while run:
         songEndTime = songStartTime + songLength     # Calculate end time
 
     # Draw ground tiles
-    ground_tiles.clear()
+    groundTiles.clear()
     x_position = 0
     while x_position < WIDTH:
         # Alternate between two ground tile sprites for visual variation
         tile = tilesSpriteSheet[0] if (x_position // tileWidth) % 2 == 0 else tilesSpriteSheet[1]
         screen.blit(tile, (x_position, HEIGHT - tileHeight))
         # Save tile rect for collision detection
-        ground_tiles.append(pygame.Rect(x_position, HEIGHT - tileHeight, tileWidth, tileHeight))
+        groundTiles.append(pygame.Rect(x_position, HEIGHT - tileHeight, tileWidth, tileHeight))
         x_position += tileWidth
+
+    wall_x = 1000
+    wall_y = HEIGHT - tileHeight * 5  # Start placing the wall at the bottom, 5 tiles high
+
+    # Define a rectangle wall instead of tiles
+    wall_width = tileWidth
+    wall_height = tileHeight * 5
+    wallRect = pygame.Rect(wall_x, HEIGHT - wall_height, wall_width, wall_height)
+
+    # Draw the wall as a solid color rectangle (optional: use a surface or image)
+    pygame.draw.rect(screen, (100, 100, 100), wallRect)
 
     # Read keyboard input for movement
     keys = pygame.key.get_pressed()
@@ -148,9 +159,9 @@ while run:
             last_update = now
             if jumpIndex < len(jumpAnimation) - 1:
                 jumpIndex += 1
-
     # Idle or run animation logic
     else:
+        # Thank Google :pray:
         if (now - last_update) >= animationCooldown:
             last_update = now
             index = (index + 1) % len(currentAnimation)
@@ -168,7 +179,7 @@ while run:
 
     # Collision detection with the ground
     onGround = False
-    for tileRect in ground_tiles:
+    for tileRect in groundTiles:
         if playerRect.colliderect(tileRect):
             if verticalVelocity > 0 and playerRect.bottom > tileRect.top:
                 playerRect.bottom = tileRect.top  # Adjust position to sit on tile
@@ -178,6 +189,27 @@ while run:
                 jumpIndex = 0
                 jumpAnimationStarted = False
                 onGround = True
+
+    if playerRect.colliderect(wallRect):
+        # Handle landing on top of the wall
+        if verticalVelocity > 0 and playerRect.bottom > wallRect.top > playerRect.top:
+            playerRect.bottom = wallRect.top
+            player_y = playerRect.y
+            verticalVelocity = 0
+            isJumping = False
+            jumpIndex = 0
+            jumpAnimationStarted = False
+            onGround = True
+
+        # Handle side collisions
+        elif playerRect.right > wallRect.left > playerRect.left:
+            # Colliding from left side
+            playerRect.right = wallRect.left
+            player_x = playerRect.x
+        elif playerRect.left < wallRect.right < playerRect.right:
+            # Colliding from right side
+            playerRect.left = wallRect.right
+            player_x = playerRect.x
 
     # Play sound when landing after a jump
     if onGround and not wasOnGround and not postJumpPlayed:
