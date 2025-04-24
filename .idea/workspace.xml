@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31d75ad7-1f78-439b-b3c2-c64909f8d657" name="Changes" comment="day 3 Part 2 (Update naming convention)">
-      <change afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animationsAndMusic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clone.py" afterDir="false" />
+    <list default="true" id="31d75ad7-1f78-439b-b3c2-c64909f8d657" name="Changes" comment="day 4 ( I hate this day )">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animationsAndMusic.py" beforeDir="false" afterPath="$PROJECT_DIR$/animationsAndMusic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clone.py" beforeDir="false" afterPath="$PROJECT_DIR$/clone.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spritesheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/spritesheet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
     "Python.animationsAndMusic.executor": "Run",
     "Python.clone.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.spritesheet.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "settings.editor.selected.configurable": "preferences.fileTypes"
@@ -145,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745387879062</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="day 4 ( I hate this day )">
+      <option name="closed" value="true" />
+      <created>1745464637268</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745464637268</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +174,7 @@
     <MESSAGE value="day 2" />
     <MESSAGE value="day 3" />
     <MESSAGE value="day 3 Part 2 (Update naming convention)" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 3 Part 2 (Update naming convention)" />
+    <MESSAGE value="day 4 ( I hate this day )" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 4 ( I hate this day )" />
   </component>
 </project>
