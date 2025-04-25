@@ -19,3 +19,26 @@ Credits:
 # Clone system inspired by the tutorial:
 # "How to create a Replay System like in Super Meat Boy using Unity"
 # Available at: https://www.youtube.com/watch?v=ilOQstDnX2I
+
+Controls:
+
+Left / A: Move Left
+
+Right / D: Move Right
+
+Up / W: Jump
+
+R: Swap Position with Clone
+
+[X]: Close the game window to quit
+
+
+Core Features:
+
+Clone mechanic: A delayed copy of the player mimics movements, enabling time-based platforming puzzles.
+
+Sprite animations: Character transitions through idle, run, and jump states smoothly.
+
+Physics: Includes gravity, jump strength, and collision detection.
+
+Interactive environment: Platforms and walls that the player must navigate using skill and strategic cloning.
