@@ -113,16 +113,19 @@ while run:
         groundTiles.append(pygame.Rect(x_position, HEIGHT - tileHeight, tileWidth, tileHeight))
         x_position += tileWidth
 
-    wall_x = 1000
-    wall_y = HEIGHT - tileHeight * 5  # Start placing the wall at the bottom, 5 tiles high
-
     # Define a rectangle wall instead of tiles
-    wall_width = tileWidth
-    wall_height = tileHeight * 5
-    wallRect = pygame.Rect(wall_x, HEIGHT - wall_height, wall_width, wall_height)
+    wallWidth = tileWidth
+    wallHeight = tileHeight * 5
+    wallRects = [
+        pygame.Rect(1200, HEIGHT - tileHeight * 6, tileWidth, tileHeight * 6),
+        pygame.Rect(550, 300, tileWidth, tileHeight),
+        pygame.Rect(920, 300, tileWidth, tileHeight),
+        pygame.Rect(50, 300, tileWidth, tileHeight),
+    ]
 
     # Draw the wall as a solid color rectangle (optional: use a surface or image)
-    pygame.draw.rect(screen, (100, 100, 100), wallRect)
+    for rect in wallRects:
+        pygame.draw.rect(screen, (100, 100, 100), rect)
 
     # Read keyboard input for movement
     keys = pygame.key.get_pressed()
@@ -190,26 +193,30 @@ while run:
                 jumpAnimationStarted = False
                 onGround = True
 
-    if playerRect.colliderect(wallRect):
-        # Handle landing on top of the wall
-        if verticalVelocity > 0 and playerRect.bottom > wallRect.top > playerRect.top:
-            playerRect.bottom = wallRect.top
-            player_y = playerRect.y
-            verticalVelocity = 0
-            isJumping = False
-            jumpIndex = 0
-            jumpAnimationStarted = False
-            onGround = True
-
-        # Handle side collisions
-        elif playerRect.right > wallRect.left > playerRect.left:
-            # Colliding from left side
-            playerRect.right = wallRect.left
-            player_x = playerRect.x
-        elif playerRect.left < wallRect.right < playerRect.right:
-            # Colliding from right side
-            playerRect.left = wallRect.right
-            player_x = playerRect.x
+    for rect in wallRects:
+        if playerRect.colliderect(rect):
+            # Landing on top of wall
+            if verticalVelocity > 0 and playerRect.bottom > rect.top > playerRect.top:
+                playerRect.bottom = rect.top
+                player_y = playerRect.y
+                verticalVelocity = 0
+                isJumping = False
+                jumpIndex = 0
+                jumpAnimationStarted = False
+                onGround = True
+            # Hitting head on bottom of wall
+            elif verticalVelocity < 0 and playerRect.top < rect.bottom < playerRect.bottom:
+                playerRect.top = rect.bottom
+                player_y = playerRect.y
+                verticalVelocity = 0  # Stop the upward motion
+            # Side collision: from left
+            elif playerRect.right > rect.left > playerRect.left:
+                playerRect.right = rect.left
+                player_x = playerRect.x
+            # Side collision: from right
+            elif playerRect.left < rect.right < playerRect.right:
+                playerRect.left = rect.right
+                player_x = playerRect.x
 
     # Play sound when landing after a jump
     if onGround and not wasOnGround and not postJumpPlayed:
@@ -233,7 +240,6 @@ while run:
         if now - lastWalkSound >= walkSoundCooldown:
             random.choice(walkSounds).play()
             lastWalkSound = now
-
 
     # Record movement for clone
     movementHistory.append({
