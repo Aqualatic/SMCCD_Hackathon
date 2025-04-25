@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31d75ad7-1f78-439b-b3c2-c64909f8d657" name="Changes" comment="day 5 (wall+collision)">
+    <list default="true" id="31d75ad7-1f78-439b-b3c2-c64909f8d657" name="Changes" comment="day 5 (More Block / Giving up&#10;)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -53,7 +53,7 @@
     "Python.spritesheet.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -168,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745529086204</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="day 5 (More Block / Giving up&#10;)">
+      <option name="closed" value="true" />
+      <created>1745541401834</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1745541401834</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +199,7 @@
     <MESSAGE value="day 4 ( I hate this day )" />
     <MESSAGE value="day 5 (Revamp game idea)" />
     <MESSAGE value="day 5 (wall+collision)" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 5 (wall+collision)" />
+    <MESSAGE value="day 5 (More Block / Giving up&#10;)" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 5 (More Block / Giving up&#10;)" />
   </component>
 </project>
