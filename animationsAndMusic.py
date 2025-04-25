@@ -2,6 +2,7 @@ import pygame
 import os
 from spritesheet import Spritesheet
 
+# This did not need to me its own class :(
 # Load and scale sprite helper
 def scalesprite(sprite, factor=2.5):
     width = sprite.get_width() * factor

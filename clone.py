@@ -1,5 +1,9 @@
 import pygame
 
+# Ghost Clone System implemented with the help of ChatGPT, for logic planning and Pygame integration.
+# Clone system inspired by the tutorial:
+# "How to create a Replay System like in Super Meat Boy using Unity"
+# Available at: https://www.youtube.com/watch?v=ilOQstDnX2I
 class Clone:
     def __init__(self, history, runAnimation, idleAnimation, jumpAnimation, delay_frames=300):
         self.history = history  # List of previous player states
